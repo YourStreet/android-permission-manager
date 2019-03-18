@@ -44,7 +44,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         final AppItem ap = mData.get(i);
         myViewHolder.appName.setText(ap.getAppName());
         myViewHolder.appImage.setImageDrawable(ap.getAppIcon());
-        myViewHolder.imageUninstall.setVisibility(ImageView.INVISIBLE);
+        //myViewHolder.imageUninstall.setVisibility(ImageView.INVISIBLE);
         myViewHolder.imageSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
