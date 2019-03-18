@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/action_rate_app"
+        android:orderInCategory="300"
+        android:title="Rate App"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="never"></item>
+    <item
+        android:id="@+id/action_share_app"
+        android:orderInCategory="300"
+        android:title="Share App"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="never"></item>
+    <item
+        android:id="@+id/action_about"
+        android:orderInCategory="300"
+        android:title="About"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="never"></item>
+    <item
+        android:id="@+id/action_close"
+        android:orderInCategory="300"
+        android:title="Close"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="never"></item>
+
+</menu>
