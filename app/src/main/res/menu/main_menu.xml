@@ -17,12 +17,6 @@
         android:icon="@mipmap/ic_launcher"
         app:showAsAction="never"></item>
     <item
-        android:id="@+id/action_about"
-        android:orderInCategory="300"
-        android:title="About"
-        android:icon="@mipmap/ic_launcher"
-        app:showAsAction="never"></item>
-    <item
         android:id="@+id/action_close"
         android:orderInCategory="300"
         android:title="Close"

@@ -1,5 +1,6 @@
 package in.yourstreet.permissionmanager;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -105,9 +106,6 @@ public class MainActivity extends AppCompatActivity implements PermissionCommonT
                 functionShareApp();
                 break;
 
-            case R.id.action_about:
-                functionAboutApp();
-                break;
             case R.id.action_close:
                 functionCloseApp();
                 break;
@@ -118,19 +116,37 @@ public class MainActivity extends AppCompatActivity implements PermissionCommonT
         return super.onOptionsItemSelected(item);
     }
 
-    void functionAboutApp()
-    {
-        Log.e("TEST","About");
-    }
 
     void functionRateApp()
     {
         Log.e("TEST","Rate App");
+        Uri uri = Uri.parse("market://details?id=" + getPackageName());
+        Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+        goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+        try {
+            startActivity(goToMarket);
+        } catch (ActivityNotFoundException e) {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("http://play.google.com/store/apps/details?id=" + getPackageName())));
+        }
     }
 
     void functionShareApp()
     {
         Log.e("TEST","Share App");
+        try {
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Permission Manager");
+            String shareMessage= "Easily check and manage permissions \n\n";
+            shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID;
+            shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+            startActivity(Intent.createChooser(shareIntent, "choose one"));
+        } catch(Exception e) {
+            e.toString();
+        }
     }
 
     void functionCloseApp()
